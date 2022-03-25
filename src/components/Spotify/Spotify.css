@@ -1,0 +1,42 @@
+body{
+    background-color: black;
+    color: aqua;
+    text-align: center;
+}
+
+img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 1.5rem;
+}
+
+.container {
+    width: 25%;
+    background-color: rgba(85, 220, 199, 0.2);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 3px solid aqua;
+    margin: auto;
+}
+
+button{
+    color: rgb(177, 97, 97);
+    font-size: medium;
+    background-color: rgb(26, 214, 214);
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px 24px;
+    border-radius: 0.5rem;
+}
+
+button a{
+    display: block;
+    text-decoration: none;
+    color: rgb(15, 74, 83);
+    font-size: medium;
+}
+
+button:hover {
+    color: black;
+    background-color: aqua;
+  }
