@@ -5,16 +5,18 @@ function App() {
   return (
     <div className="App">
       <header className="title">
-        <h1>
+        <h1 style={{textAlign: "center"}}>
           Spotify Playlist
         </h1>
       </header>
-      <Spotify name={data.name} 
-        image={data.album.images[0].url} 
-        album={data.album.name} 
-        artist={data.artists[0].name}
-        url={data.album.artists[0].external_urls.spotify}
+      {data.map((d)=>(
+        <Spotify name={d.name} 
+        image={d.album.images[0].url} 
+        album={d.album.name} 
+        artist={d.artists[0].name}
+        url={d.album.artists[0].external_urls.spotify}
       />
+      ))}
     </div>
   );
 }
