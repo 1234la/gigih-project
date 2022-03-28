@@ -20,7 +20,7 @@ img {
 }
 
 .wrapper {
-  width: 100%;
+  width: 98%;
   margin: 20px auto;
 }
 
@@ -56,25 +56,23 @@ img {
 .cards_wrap .card_bottom .card_title {
   text-transform: uppercase;
   text-align: center;
+  font-size: 12px;
 }
 
 .cards_wrap .card_bottom .card_info {
   padding: 15px;
   margin: 10px 0;
-  border: 1px dashed #0071bc;
+  border: 1px dashed aqua;
 }
 
 .cards_wrap .card_bottom .card_info .artist {
-  color: #0071bc;
+  color: aqua;
   font-size: 18px;
   margin-bottom: 5px;
 }
 .cards_wrap .card_bottom .card_info .album {
-    color: #0071bc;
-}
-
-.cards_wrap .card_bottom .card_creator {
-  text-align: center;
+    color: aqua;
+    font-size: 12px;
 }
 
 button{
