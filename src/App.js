@@ -68,7 +68,7 @@ function App() {
     <div className="App">
       <header className="title" style={{textAlign: "center"}}>
         <h1 style={{margin:"30px"}}>
-          Search Spotify Album
+          Search Album in Spotify
         </h1>
         <button onClick = {handleLogin} style={{margin:"10px"}}>Log In</button>
         <div className="search">
@@ -87,7 +87,7 @@ function App() {
               image={d.images[1].url} 
               total_track = {d.total_tracks} 
               artist={d.artists[0].name}
-              url={d.artists[0].external_urls.spotify}
+              url={d.external_urls.spotify}
             />
             ))}
         </div>
