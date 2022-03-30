@@ -67,15 +67,15 @@ img {
 
 .cards_wrap .card_bottom .card_info .artist {
   color: aqua;
-  font-size: 18px;
+  font-size: 13px;
   margin-bottom: 5px;
 }
-.cards_wrap .card_bottom .card_info .album {
+.cards_wrap .card_bottom .card_info .total-tracks {
     color: aqua;
-    font-size: 12px;
+    font-size: 10px;
 }
 
-button{
+.button_card{
     color: rgb(177, 97, 97);
     font-size: medium;
     background-color: rgb(26, 214, 214);
@@ -85,7 +85,7 @@ button{
     border-radius: 0.5rem;
 }
 
-button a{
+.button_card a{
     display: block;
     text-decoration: none;
     color: rgb(15, 74, 83);
