@@ -89,6 +89,7 @@ function App() {
         console.log(err.config);
         swal("ERROR", "terdapat kesalahan saat mengambil data!", "error");
       });
+      //cek authorization
       console.log(localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"));
   };
  
@@ -120,18 +121,6 @@ function App() {
       <div className="wrapper">
         <div className="cards_wrap">
         {spotifyData.map((d, id)=>{
-          // {select.map((s) => {
-          //   console.log("ini s:"+s)
-          //   console.log("ini id:"+d.id)
-          //   if(d.id === s){
-          //       setStatus(true)
-          //   }
-          //   else{
-          //       setStatus(false)
-          //       }
-          //   })
-          //   console.log("app.js map select "+status)
-          // }
           return(
               <Spotify 
                 key = {id}
