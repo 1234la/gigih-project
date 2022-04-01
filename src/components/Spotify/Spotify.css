@@ -70,7 +70,7 @@ img {
   font-size: 13px;
   margin-bottom: 5px;
 }
-.cards_wrap .card_bottom .card_info .total-tracks {
+.cards_wrap .card_bottom .card_info .album-name, .total-tracks {
     color: aqua;
     font-size: 10px;
 }
