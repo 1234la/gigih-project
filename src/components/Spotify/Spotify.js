@@ -3,9 +3,9 @@ import {useCallback} from "react";
 
 const Spotify = (props) => {
 
-    const handleUpdateSelect = useCallback(id => {
-        props.updateSelect(id)
-    }, [props.updateSelect])
+    // const handleUpdateSelect = useCallback(id => {
+    //     props.updateSelect(id)
+    // }, [props.updateSelect])
 
     //cek selected
     console.log(props.selected)
@@ -14,13 +14,13 @@ const Spotify = (props) => {
     const select = (idSelect) => {
         //ngambil semua elemen dari selected terus ditambahin dengan id item yg baru diselect
         console.log("selected id : "+idSelect)
-        handleUpdateSelect([...props.selected, idSelect])
+       props.updateSelect([...props.selected, idSelect])
     }
 
     //masukkin id yg deselect
     const deselect = (idDeselect) => {
         const filterSelected = props.selected.filter((spotify) => {return spotify !== idDeselect} );
-        handleUpdateSelect(filterSelected);
+       props.updateSelect(filterSelected);
     };
 
     return(
@@ -41,7 +41,7 @@ const Spotify = (props) => {
                     <div className="card_button">
                         {props.selected.includes(props.id_item) ? 
                             <button className="button_card" type="button" onClick={() => deselect(props.id_item)}>
-                                <a>Deselect</a>
+                                <a href=''>Deselect</a>
                             </button>
                             :
                             <button className="button_card" type="button" onClick={() => select(props.id_item)}>
