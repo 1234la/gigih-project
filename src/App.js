@@ -1,8 +1,10 @@
-import Spotify from './components/Spotify/Spotify';
+import SongCard from './components/SongCard/SongCard';
+import CreatePlaylist from './components/CreatePlaylist/CreatePlaylist'
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import {InputGroup, FormControl } from 'react-bootstrap/';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 
 const CLIENT_ID = 'f354fa333682477f88c2c9f6dd53d33b';
 const SPOTIFY_AUTHORIZE_ENDPOINT = 'https://accounts.spotify.com/authorize';
@@ -25,14 +27,14 @@ const getReturnedParamsFromSpotifyAuth = (hash) => {
 
 function App() {
   const [token, setToken] = useState("");
+  const [userId, setUserId] = useState("");
   const [inputVal, setInputVal] = useState("");
   const [spotifyData, setSpotifyData] = useState([]);
-  const [select, setSelect] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   useEffect(() => {
     if(window.location.hash){
       const {access_token, expires_in, token_type} = getReturnedParamsFromSpotifyAuth(window.location.hash);
-      // console.log(currentValue);
       localStorage.clear();
 
       // Set variable disimpan di local storage
@@ -40,9 +42,9 @@ function App() {
       localStorage.setItem("tokenType", token_type);
       localStorage.setItem("expiresIn", expires_in);
     }
-
-  //set token
+    //set token
     setToken(localStorage.getItem("accessToken"));
+    getUserId();
   },[]);
 
   const handleLogin = () => {
@@ -82,7 +84,6 @@ function App() {
             console.log("*************************")
             console.log(err.request);
         } else {
-
             console.log("++++++++++++++++++++++++")
             console.log('Error', err.message);
         }
@@ -92,37 +93,87 @@ function App() {
       //cek authorization
       console.log(localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"));
   };
- 
+
+  // fetch User Id
+  const getUserId = async()=>{
+    await fetch(
+      `https://api.spotify.com/v1/me`, { 
+        method: 'get', 
+        headers:{
+          'Accept': "application/json",
+          'Content-Type': "application/json",
+          'Authorization': localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"),
+        }
+      }
+    ).then((response) => response.json())
+      .then((data) => {
+        console.log("User data: "+ data.id);
+        setUserId(data.id);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  };
+
   return (
     <div className="App">
       <header className="title" style={{textAlign: "center"}}>
-        <h1 style={{margin:"30px"}}>
-          Search Songs, Artists, or Album on Spotify
-        </h1>
-
-      {/* cek login  */}
-      {!token || !window.localStorage.getItem("tokenType") ? 
-        <button onClick = {handleLogin} style={{margin:"10px"}}>Log In</button>
+        {/* cek login  */}
+        {!token || !window.localStorage.getItem("accessToken") ? 
+        <div className=" flex flex-col justify-center items-center m-0 top-0 bottom-0 left-0 right-0 position absolute">
+          <div className='w-1/2'>
+              <img
+              src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
+              alt="logo-spotify"
+              className="logo-spotif"
+            />
+          </div>
+          <p className="text-white">You Have to Log In Spotify !!!</p>
+          <button className="px-10 py-2 bg-white hover:bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-xl" onClick = {handleLogin} style={{margin:"10px"}}>Log In</button>
+        </div>  
         :  
-        <button onClick = {handleLogout} style={{margin:"10px"}}>Log Out</button> 
+        <div>
+          <h1 className="text-aqua-400 font-semibold text-2xl" style={{margin:"30px"}}> Create Your Playlist !</h1>
+          <button className="px-6 py-2 bg-aqua-400  hover:bg-aqua-500 text-black font-medium text-xs leading-tight uppercase rounded" onClick = {handleLogout} style={{margin:"10px"}}>Log Out</button>
+        </div>
       }
 
       {token ?  
-        <div className="search">
-          <input type="text" onChange={(e) => setInputVal(e.target.value)}/>
-          <button type="submit" onClick={getData}>
-            Search 
-          </button>
+        <div className="flex justify-center">
+          <div className="mb-3 xl:w-96">
+            <div className="flex w-full">
+            <input type="search"
+              className="flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-aqua-400 focus:outline-none"
+              placeholder="Search"
+              aria-label="Search"
+              onChange={(e) => setInputVal(e.target.value)}/>
+            <button className="px-6 py-2 bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-r focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:bg-aqua-500" type="button" onClick={getData}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl"/>
+            </button>
+            </div>
+          </div>
         </div>
-        : <p>You Have to Log In Spotify !!!</p>
+        : <></>
+      }
+      </header>
+
+      {token && selectedItems[0]?
+        <div>
+        <CreatePlaylist
+          token={token}
+          userId={userId}
+          songUris={selectedItems}
+          updateSongUris={setSelectedItems}
+        />
+        </div>:
+        <div></div>
       }
 
-      </header>
       <div className="wrapper">
         <div className="cards_wrap">
         {spotifyData.map((d, id)=>{
-          return(
-              <Spotify 
+          return token?(
+              <SongCard
                 key = {id}
                 name={d.name} 
                 image={d.album.images[1].url} 
@@ -131,10 +182,10 @@ function App() {
                 artist={d.artists[0].name}
                 url={d.external_urls.spotify}
                 id_item={d.id}
-                selected={select}
-                updateSelect={setSelect}
+                selected={selectedItems}
+                updateSelect={setSelectedItems}
               />
-            )
+            ):<></>
           })
         }
         </div>

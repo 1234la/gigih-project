@@ -41,11 +41,11 @@ const Spotify = (props) => {
                     <div className="card_button">
                         {props.selected.includes(props.id_item) ? 
                             <button className="button_card" type="button" onClick={() => deselect(props.id_item)}>
-                                <a href=''>Deselect</a>
+                                <a>Deselect</a>
                             </button>
                             :
                             <button className="button_card" type="button" onClick={() => select(props.id_item)}>
-                                <a href={props.url} target="_blank" rel="noreferrer">Select</a>
+                                <a>Select</a>
                             </button>
                         }
                     </div>
