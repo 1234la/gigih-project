@@ -1,10 +1,12 @@
-import SongCard from './components/SongCard/SongCard';
-import CreatePlaylist from './components/CreatePlaylist/CreatePlaylist'
+import SongCard from './components/SongCard/';
+import CreatePlaylist from './components/CreatePlaylist/'
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { setAccessToken } from './reducer/accessTokenSlice';
 import swal from 'sweetalert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faSpotify } from '@fortawesome/free-brands-svg-icons'
+//import state from 'sweetalert/typings/modules/state';
 
 const CLIENT_ID = 'f354fa333682477f88c2c9f6dd53d33b';
 const SPOTIFY_AUTHORIZE_ENDPOINT = 'https://accounts.spotify.com/authorize';
@@ -13,6 +15,7 @@ const SPACES_DELIMETER = "%20";
 const SCOPES = ["playlist-modify-private"];
 const SCOPES_URL_PARAM = SCOPES.join(SPACES_DELIMETER);
 
+// splitting parameters
 const getReturnedParamsFromSpotifyAuth = (hash) => {
   const stringAfterHashtag = hash.substring(1);
   const paramsInUrl = stringAfterHashtag.split("&");
@@ -26,7 +29,12 @@ const getReturnedParamsFromSpotifyAuth = (hash) => {
 }
 
 function App() {
-  const [token, setToken] = useState("");
+  // tanpa redux
+  //const [token, setToken] = useState("");
+  // dengan redux
+  const token = useSelector((state) => state.accessToken.value);
+  const dispatch = useDispatch();
+
   const [userId, setUserId] = useState("");
   const [inputVal, setInputVal] = useState("");
   const [spotifyData, setSpotifyData] = useState([]);
@@ -42,9 +50,10 @@ function App() {
       localStorage.setItem("tokenType", token_type);
       localStorage.setItem("expiresIn", expires_in);
     }
-    //set token
-    setToken(localStorage.getItem("accessToken"));
-    getUserId();
+    // set token tanpa redux
+    // setToken(localStorage.getItem("accessToken"));
+    // set token dengan redux
+    dispatch(setAccessToken(localStorage.getItem("accessToken")));
   },[]);
 
   const handleLogin = () => {
@@ -52,12 +61,15 @@ function App() {
   };
 
   const handleLogout = () => {
-      setToken("");
+      // tanpa redux
+      //setToken("");
+      // dengan redux
+      dispatch(setAccessToken(""));
       window.localStorage.removeItem("accessToken");
   };
   
   //fetch API data
-  const getData = async () => {
+  const getData = async (accessToken) => {
     console.log("cek input:" + inputVal);
     await fetch(
       `https://api.spotify.com/v1/search?type=track&include_external=audio&q=${inputVal}`, { 
@@ -65,13 +77,14 @@ function App() {
         headers:{
           'Accept': "application/json",
           'Content-Type': "application/json",
-          'Authorization': localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"),
+          'Authorization': localStorage.getItem("tokenType")+ " " + accessToken,
         }
       }
     ).then((response) => response.json())
       .then((data) => {
         console.log(data);
         setSpotifyData(data.tracks.items);
+        getUserId();
       })
       .catch((err) => {
         console.log(err)
@@ -91,7 +104,7 @@ function App() {
         swal("ERROR", "terdapat kesalahan saat mengambil data!", "error");
       });
       //cek authorization
-      console.log(localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"));
+      console.log(localStorage.getItem("tokenType")+ " " + accessToken);
   };
 
   // fetch User Id
@@ -107,7 +120,7 @@ function App() {
       }
     ).then((response) => response.json())
       .then((data) => {
-        console.log("User data: "+ data.id);
+        console.log("User ID: "+ data.id);
         setUserId(data.id);
       })
       .catch((err) => {
