@@ -23,7 +23,8 @@ const CreatePlaylist = () => {
         //setToken("");
         // dengan redux
         dispatch(setAccessToken(""));
-        window.localStorage.removeItem("accessToken");
+        window.localStorage.clear();
+        //window.localStorage.removeItem("accessToken");
     };
 
     // fetch API data

@@ -1,27 +1,31 @@
 
 img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 5%;
 }
 
 .wrapper {
-  width: 98%;
+  width: 95%;
   margin: 20px auto;
+  /* background-color:blueviolet; */
 }
 
 .cards_wrap {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 .cards_wrap .card_item {
-  width: 25%;
+  /* width: 25%; */
   padding: 10px;
 }
 
 .cards_wrap .card_inner {
+  display: flex;
   background: #fff;
   border-radius: 3%;
   border: 3px solid aqua;
@@ -31,18 +35,18 @@ img {
 
 .cards_wrap .card_top {
   width: 100%;
-  min-height: 225px;
+  /* min-height: 225px; */
   padding: 10px;
-  padding-bottom: 0;
+  /* padding-bottom: 0; */
 }
 
 .cards_wrap .card_bottom {
-  padding: 15px;
+  padding: 10px;
 }
 
 .cards_wrap .card_bottom .card_title {
   text-transform: uppercase;
-  text-align: center;
+  /* text-align: center; */
   font-size: 12px;
 }
 
@@ -56,7 +60,13 @@ img {
   color: aqua;
 }
 
-.cards_wrap .card_bottom .card_info .artist {
+.artist{
+  color: aqua;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+/* .cards_wrap .card_bottom .card_info .artist {
   color: aqua;
   font-size: 13px;
   margin-bottom: 5px;
@@ -64,7 +74,7 @@ img {
 .cards_wrap .card_bottom .card_info .album-name, .total-tracks {
     color: aqua;
     font-size: 10px;
-}
+} */
 
 .button_card{
     color: rgb(177, 97, 97);
@@ -76,19 +86,19 @@ img {
     border-radius: 0.5rem;
 }
 
-.button_card a{
+/* .button_card a{
     display: block;
     text-decoration: none;
     color: rgb(15, 74, 83);
     font-size: medium;
-}
+} */
 
 .button_card:hover {
     color: black;
     background-color: rgb(26, 214, 214);
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .cards_wrap .card_item {
     width: 33.3%;
   }
@@ -107,4 +117,4 @@ img {
   .cards_wrap .card_item {
     width: 100%;
   }
-}
+} */

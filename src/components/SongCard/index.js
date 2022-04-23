@@ -27,25 +27,26 @@ const SongCard = (props) => {
         <div className="card_item">
             <div className="card_inner">
                 <div className="card_top">
-                <img src={props.image} alt="car" />
+                    <img src={props.image} alt="songimage" />
                 </div>
                 <div className="card_bottom">
                     <div className="card_title">
                         <b>{props.name}</b>
                     </div>
-                    <div className="card_info">
+                    <p className="artist">{props.artist}</p>
+                    {/* <div className="card_info">
                         <p className="artist">Artist Name : {props.artist}</p>
                         <p className="album-name">Album Name : {props.album_name}</p>
                         <p className="total-tracks"> Total Track of Album : {props.total_track_album} </p>
-                    </div>
+                    </div> */}
                     <div className="card_button">
                         {/* cari apakah ada yang sama id di array selected dengan includes */}
                         {props.selected.includes("spotify:track:"+props.id_item) ? 
-                            <button className="bg-aqua-500 w-full rounded-lg mt-1.5 px-10 py-2.5" type="button" onClick={() => deselect(props.id_item)}>
+                            <button className="bg-aqua-500  rounded-lg mt-1.5 px-10 py-2.5" type="button" onClick={() => deselect(props.id_item)}>
                                 Deselect
                             </button>
                             :
-                            <button className="bg-aqua-400 w-full rounded-lg mt-1.5 px-10 py-2.5 hover:bg-aqua-500" type="button" onClick={() => select(props.id_item)}>
+                            <button className="bg-aqua-400  rounded-lg mt-1.5 px-10 py-2.5 hover:bg-aqua-500" type="button" onClick={() => select(props.id_item)}>
                                 Select
                             </button>
                         }

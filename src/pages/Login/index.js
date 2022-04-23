@@ -22,9 +22,6 @@ const Login = () => {
             localStorage.setItem("tokenType", token_type);
             localStorage.setItem("expiresIn", expires_in);
         }
-        else{
-            console.log("tidak ada hash");
-        }
 
         // set token tanpa redux
         // setToken(localStorage.getItem("accessToken"));
