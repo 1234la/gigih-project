@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 
-    const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
+const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
     const [playlistId, setPlaylistId] = useState("");
     const [form, setForm] = useState({
         title: "",
