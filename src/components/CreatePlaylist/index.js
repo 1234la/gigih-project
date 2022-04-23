@@ -51,9 +51,11 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
             });
 
         setForm({ title: "", description: "" });
-        alert("Successfully created playlist");
+        // alert("Successfully created playlist");
+        swal("Successs!", "Successfully created playlist", "success")
         } else {
-        alert("Title must be more than 10 characters");
+        // alert("Title must be more than 10 characters");
+        swal("Warning", "Title must be more than 10 characters", "warning")
         }
     };
 
