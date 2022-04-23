@@ -69,7 +69,7 @@ function App() {
   };
   
   //fetch API data
-  const getData = async (accessToken) => {
+  const getData = async () => {
     console.log("cek input:" + inputVal);
     await fetch(
       `https://api.spotify.com/v1/search?type=track&include_external=audio&q=${inputVal}`, { 
@@ -77,7 +77,7 @@ function App() {
         headers:{
           'Accept': "application/json",
           'Content-Type': "application/json",
-          'Authorization': localStorage.getItem("tokenType")+ " " + accessToken,
+          'Authorization': localStorage.getItem("tokenType")+ " " +token,
         }
       }
     ).then((response) => response.json())
@@ -104,7 +104,7 @@ function App() {
         swal("ERROR", "terdapat kesalahan saat mengambil data!", "error");
       });
       //cek authorization
-      console.log(localStorage.getItem("tokenType")+ " " + accessToken);
+      console.log("cek auth: "+localStorage.getItem("tokenType")+ " " + token);
   };
 
   // fetch User Id
