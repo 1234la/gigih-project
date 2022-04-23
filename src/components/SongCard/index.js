@@ -42,11 +42,11 @@ const SongCard = (props) => {
                         {/* cari apakah ada yang sama id di array selected dengan includes */}
                         {props.selected.includes("spotify:track:"+props.id_item) ? 
                             <button className="bg-aqua-500 w-full rounded-lg mt-1.5 px-10 py-2.5" type="button" onClick={() => deselect(props.id_item)}>
-                                <a>Deselect</a>
+                                Deselect
                             </button>
                             :
                             <button className="bg-aqua-400 w-full rounded-lg mt-1.5 px-10 py-2.5 hover:bg-aqua-500" type="button" onClick={() => select(props.id_item)}>
-                                <a>Select</a>
+                                Select
                             </button>
                         }
                     </div>

@@ -30,7 +30,7 @@ const Login = () => {
         // setToken(localStorage.getItem("accessToken"));
         // set token dengan redux
         dispatch(setAccessToken(localStorage.getItem("accessToken")));
-    },[]);
+    },[dispatch]);
 
     // splitting parameters
     const getReturnedParamsFromSpotifyAuth = (hash) => {

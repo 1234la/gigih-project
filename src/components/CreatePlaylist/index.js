@@ -11,11 +11,39 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
 
     // run addSong function when playlistId is set
     useEffect(() => {
+          // add songs to the playlist
+          const addSongs = async (id) => {
+            console.log("cek SongUris: "+songUris);
+            await axios
+            .post(
+                `https://api.spotify.com/v1/playlists/${id}/tracks`,
+                {
+                uris: [...songUris],
+                },
+                {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                }
+            )
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
+
+        // clear data selected if create playlist done
+        const clearSongUris = () => {
+            updateSongUris([]);
+        };
+
         if (playlistId) {
             addSongs(playlistId);
             clearSongUris();
         }
-    }, [playlistId]);
+    }, [playlistId, songUris, token, updateSongUris]);
 
     // get the form data
     const handleForm = (e) => {
@@ -57,34 +85,6 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
         // alert("Title must be more than 10 characters");
         swal("Warning", "Title must be more than 10 characters", "warning")
         }
-    };
-
-    // add songs to the playlist
-    const addSongs = async (id) => {
-        console.log("cek SongUris: "+songUris);
-        await axios
-        .post(
-            `https://api.spotify.com/v1/playlists/${id}/tracks`,
-            {
-            uris: [...songUris],
-            },
-            {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-            }
-        )
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    };
-
-    // clear data selected if create playlist done
-    const clearSongUris = () => {
-        updateSongUris([]);
     };
 
   return (
