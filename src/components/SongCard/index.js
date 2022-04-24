@@ -33,7 +33,8 @@ const SongCard = (props) => {
                     <div className="card_title">
                         <b>{props.name}</b>
                     </div>
-                    <p className="artist">{props.artist}</p>
+                    <p className="artist">- {props.artist} -</p>
+                    <p className="album-name">Album: {props.album_name}</p>
                     {/* <div className="card_info">
                         <p className="artist">Artist Name : {props.artist}</p>
                         <p className="album-name">Album Name : {props.album_name}</p>

@@ -60,9 +60,9 @@ img {
   color: aqua;
 }
 
-.artist{
+.artist, .album-name{
   color: aqua;
-  font-size: 13px;
+  font-size: 11px;
   margin-bottom: 5px;
 }
 
