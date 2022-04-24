@@ -99,14 +99,11 @@ const Navbar = () => {
                 >
                 {(ref) => (
                     <div className="md:hidden" id="mobile-menu">
-                    <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a href="#" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">Create Playlist</a>
-
-                        <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-                        <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Log Out </a>
+                        <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                            <NavLink activeClassName="active" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium" to='/create-playlist'> Create Playlist </NavLink>
+                            <NavLink activeClassName="active" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">My Playlist</NavLink>
+                        </div>
                     </div>
-                </div>
                 )}
                 </Transition>
         </nav>
