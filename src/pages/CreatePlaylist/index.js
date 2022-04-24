@@ -102,7 +102,7 @@ const CreatePlaylist = () => {
                             <div className="flex w-full">
                                 <input type="search"
                                     className="flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-aqua-400 focus:outline-none"
-                                    placeholder="Search"
+                                    placeholder="Search music, album, artis...."
                                     aria-label="Search"
                                     onChange={(e) => setInputVal(e.target.value)}/>
                                 <button className="px-6 py-2 bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-r focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:bg-aqua-500" type="button" onClick={getData}>
