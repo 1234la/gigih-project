@@ -8,6 +8,7 @@ import {
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import CreatePlaylist from './pages/CreatePlaylist';
+import Playlist from './pages/Playlist';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
         <Route path="/create-playlist">
           <Navbar/>
           {token ? <CreatePlaylist /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/playlist">
+          <Navbar/>
+          {token ? <Playlist /> : <Redirect to="/" />}
         </Route>
         <Route path="*">
           <h3>404</h3>

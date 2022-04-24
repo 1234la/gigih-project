@@ -26,7 +26,7 @@ const Navbar = () => {
                             <div className="ml-10 flex items-center space-x-4">
                                 <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/create-playlist' > Create Playlist </NavLink>
 
-                                <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/create-playlist' > My Playlist </NavLink>
+                                <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/playlist' > My Playlist </NavLink>
 
                                 <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
                             </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
                     <div className="md:hidden" id="mobile-menu">
                         <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <NavLink activeClassName="active" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium" to='/create-playlist'> Create Playlist </NavLink>
-                            <NavLink activeClassName="active" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">My Playlist</NavLink>
+                            <NavLink activeClassName="active" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium" to='/playlist'>My Playlist</NavLink>
                         </div>
                     </div>
                 )}
