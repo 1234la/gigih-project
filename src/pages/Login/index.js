@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { setAccessToken } from '../../reducer/accessTokenSlice';
+import { setUser } from "../../reducer/userSlice";
 
 const CLIENT_ID = 'f354fa333682477f88c2c9f6dd53d33b';
 const SPOTIFY_AUTHORIZE_ENDPOINT = 'https://accounts.spotify.com/authorize';
@@ -23,10 +24,35 @@ const Login = () => {
             localStorage.setItem("expiresIn", expires_in);
         }
 
+        // fetch user data function
+        const getUserId = async()=>{
+            await fetch(
+            `https://api.spotify.com/v1/me`, { 
+                method: 'get', 
+                headers:{
+                'Accept': "application/json",
+                'Content-Type': "application/json",
+                'Authorization': localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"),
+                }
+            }
+            ).then((response) => response.json())
+            .then((data) => {
+                console.log("User ID: "+ data.id);
+                //tanpa redux
+                // setUserId(data.id);
+                //dengan redux
+                dispatch(setUser(data))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        };
+
         // set token tanpa redux
         // setToken(localStorage.getItem("accessToken"));
         // set token dengan redux
         dispatch(setAccessToken(localStorage.getItem("accessToken")));
+        getUserId();
     },[dispatch]);
 
     // splitting parameters

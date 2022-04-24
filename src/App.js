@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import CreatePlaylist from './pages/CreatePlaylist';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
@@ -19,6 +20,7 @@ function App() {
           {!token ? <Login /> : <Redirect to="/create-playlist" />}
         </Route>
         <Route path="/create-playlist">
+          <Navbar/>
           {token ? <CreatePlaylist /> : <Redirect to="/" />}
         </Route>
         <Route path="*">
