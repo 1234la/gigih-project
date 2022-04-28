@@ -76,12 +76,12 @@ img {
     font-size: 10px;
 } */
 
-.button_card{
+/* .button_card{
     color: rgb(177, 97, 97);
     font-size: medium;
     background-color: aqua;
     width: 100%;
-}
+} */
 
 /* .button_card a{
     display: block;
@@ -90,10 +90,10 @@ img {
     font-size: medium;
 } */
 
-.button_card:hover {
+/* .button_card:hover {
     color: black;
     background-color: rgb(26, 214, 214);
-}
+} */
 
 /* @media (max-width: 1024px) {
   .cards_wrap .card_item {

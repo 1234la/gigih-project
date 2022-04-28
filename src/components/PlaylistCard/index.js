@@ -11,10 +11,9 @@ const PlaylistCard = (props) => {
                     <p className="text-aqua-500 text-base mb-4">
                         {props.desc}
                     </p>
-                        <a className="block" href={props.url} target="_blank" rel="noreferrer">
-                            <button type="button" className="inline-block px-6 py-2.5 bg-aqua-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-aqua-400 hover:shadow-lg hover:text-black focus:bg-aqua-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-aqua-500 active:shadow-lg transition duration-150 ease-in-out"> Play </button>
-                        </a>
-                    
+                    <a className="block" href={props.url} target="_blank" rel="noreferrer">
+                        <button type="button" className="inline-block px-6 py-2.5 bg-aqua-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-aqua-400 hover:shadow-lg hover:text-black focus:bg-aqua-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-aqua-500 active:shadow-lg transition duration-150 ease-in-out"> Play </button>
+                    </a>
                 </div>
             </div>
         </div>

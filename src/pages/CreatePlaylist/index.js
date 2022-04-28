@@ -12,6 +12,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const CreatePlaylist = () => {
 
     const token = useSelector((state) => state.accessToken.value);
+    const tokenType = useSelector((state)=> state.accessToken.type);
     const userId = useSelector((state) => state.user.data.id);
     // const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const CreatePlaylist = () => {
             headers:{
             'Accept': "application/json",
             'Content-Type': "application/json",
-            'Authorization': localStorage.getItem("tokenType")+ " " +token,
+            'Authorization': tokenType+ " " +token,
             }
         }
         ).then((response) => response.json())
@@ -68,33 +69,11 @@ const CreatePlaylist = () => {
         console.log("cek auth: "+localStorage.getItem("tokenType")+ " " + token);
     };
 
-    // // fetch user data
-    // const getUserId = async()=>{
-    //     await fetch(
-    //     `https://api.spotify.com/v1/me`, { 
-    //         method: 'get', 
-    //         headers:{
-    //         'Accept': "application/json",
-    //         'Content-Type': "application/json",
-    //         'Authorization': localStorage.getItem("tokenType")+ " " +localStorage.getItem("accessToken"),
-    //         }
-    //     }
-    //     ).then((response) => response.json())
-    //     .then((data) => {
-    //         console.log("User ID: "+ data.id);
-    //         setUserId(data.id);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err)
-    //     })
-    // };
-
     return(
         <div>
             <header className="title" style={{textAlign: "center"}}>
                 <div>
                 <h1 className="text-aqua-400 font-semibold text-2xl" style={{margin:"30px"}}> Create Your Playlist !</h1>
-                {/* <button className="px-6 py-2 bg-aqua-400  hover:bg-aqua-500 text-black font-medium text-xs leading-tight uppercase rounded" onClick = {handleLogout} style={{margin:"10px"}}>Log Out</button> */}
                 </div>
                 {token ?  
                     <div className="flex justify-center">

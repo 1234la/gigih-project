@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { removeAccessToken } from "../../reducer/accessTokenSlice";
 import { Transition } from "@headlessui/react";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const user = useSelector((state) => state.user.data);
@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
     <div>
-        <nav className="bg-teal-500">
+        <nav className="bg-teal-400 rounded-b-3xl shadow-lg shadow-cyan-500/50">
             <div className="max-w-7.3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
@@ -28,9 +28,9 @@ const Navbar = () => {
 
                                 <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/create-playlist' > Create Playlist </NavLink>
 
-                                <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/playlist' > My Playlist </NavLink>
+                                <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/playlist'> My Playlist </NavLink>
 
-                                <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
+                                <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white hover:text-black mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
                             </div>
                         </div>
                     </div>
@@ -104,8 +104,8 @@ const Navbar = () => {
                 {(ref) => (
                     <div className="md:hidden" id="mobile-menu">
                         <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            <NavLink activeClassName="active" className="hover:bg-black hover:text-aqua-300 text-white block px-3 py-2 rounded-md text-base font-medium" to='/create-playlist'> Create Playlist </NavLink>
-                            <NavLink activeClassName="active" className="hover:bg-black hover:text-aqua-300 text-white block px-3 py-2 rounded-md text-base font-medium" to='/playlist'>My Playlist</NavLink>
+                            <NavLink activeClassName="active" className="hover:bg-black hover:text-aqua-300 text-black block px-3 py-2 rounded-md text-base font-medium" to='/create-playlist'> Create Playlist </NavLink>
+                            <NavLink activeClassName="active" className="hover:bg-black hover:text-aqua-300 text-black block px-3 py-2 rounded-md text-base font-medium" to='/playlist'>My Playlist</NavLink>
                             <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
                         </div>
                     </div>

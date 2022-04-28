@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { setAccessToken } from '../../reducer/accessTokenSlice';
+import { setTokenType } from "../../reducer/accessTokenSlice";
 import { setUser } from "../../reducer/userSlice";
 
 const CLIENT_ID = 'f354fa333682477f88c2c9f6dd53d33b';
@@ -50,6 +51,8 @@ const Login = () => {
 
         // set token tanpa redux
         // setToken(localStorage.getItem("accessToken"));
+        // set token type dengan redux
+        dispatch(setTokenType(localStorage.getItem("tokenType")));
         // set token dengan redux
         dispatch(setAccessToken(localStorage.getItem("accessToken")));
         getUserId();

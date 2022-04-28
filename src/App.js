@@ -13,7 +13,8 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   const token = useSelector((state) => state.accessToken.value);
-
+  // clear local storage
+  window.localStorage.clear()
   return (
     <Router>
       <Switch>

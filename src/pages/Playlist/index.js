@@ -4,6 +4,7 @@ import PlaylistCard from '../../components/PlaylistCard';
 
 const Playlist = () => {
     const token = useSelector((state) => state.accessToken.value);
+    const tokenType = useSelector((state)=> state.accessToken.type);
     const [playlist, setPlaylist] = useState([]);
 
     useEffect (() => {
@@ -14,7 +15,7 @@ const Playlist = () => {
                 headers:{
                 'Accept': "application/json",
                 'Content-Type': "application/json",
-                'Authorization': localStorage.getItem("tokenType")+ " "+localStorage.getItem("accessToken"),
+                'Authorization': tokenType+ " "+token,
                 }
             }
             ).then((response) => response.json())
@@ -26,7 +27,7 @@ const Playlist = () => {
             })
         };
         getPlaylist();
-    },[]);
+    },[token, tokenType]);
 
     return(
         <div>
