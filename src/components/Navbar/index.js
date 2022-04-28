@@ -30,7 +30,7 @@ const Navbar = () => {
 
                                 <NavLink activeClassName="active" className=" hover:bg-black hover:text-aqua-400 text-black active:bg-black active:text-aqua-400 px-3 py-2 rounded-md text-sm font-medium" to='/playlist'> My Playlist </NavLink>
 
-                                <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white hover:text-black mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
+                                <button href="#" className="text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => { dispatch(removeAccessToken());}}>Log Out</button>
                             </div>
                         </div>
                     </div>
