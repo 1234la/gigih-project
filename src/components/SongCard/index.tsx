@@ -1,25 +1,36 @@
 import './SongCard.css';
 
-const SongCard = (props) => {
+type songCard = {
+    name: string,
+    image: string,
+    artist: string,
+    album_name: string,
+    id_item: string,
+    total_track_album: number,
+    url: string,
+    selected: string[],
+    updateSelect: any,
+}
+
+const SongCard = (props:songCard) => {
 
     //cek selected
     console.log(props.selected)
 
     //masukkin id items yang diselect untuk buat playlist
-    const select = (idSelect) => {
+    const select = (idSelect:string) => {
         //ambil semua id item dari array selected terus ditambahin dengan id item yg baru diselect
         console.log("selected id : "+idSelect)
         const combineIdSelected= "spotify:track:"+idSelect;
-        //props.updateSelect([...props.selected, idSelect])
         props.updateSelect([...props.selected, combineIdSelected])
     }
 
     //masukkin id items yg tidak di deselect
-    const deselect = (idDeselect) => {
+    const deselect = (idDeselect:string) => {
         const combineIdDelected= "spotify:track:"+ idDeselect;
         //melakukan update item yang diselect dengan filter id
         // const filterSelected = props.selected.filter((idSelectedItem) => {return idSelectedItem !== idDeselect} );
-        const filterSelected = props.selected.filter((idSelectedItem) => {return idSelectedItem !== combineIdDelected} );
+        const filterSelected = props.selected.filter((idSelectedItem:string) => {return idSelectedItem !== combineIdDelected} );
         props.updateSelect(filterSelected);
     };
 

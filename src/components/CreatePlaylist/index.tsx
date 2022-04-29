@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
-const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
+type createPlaylist = {
+  token: string,
+  userId: string,
+  songUris: any,
+  updateSongUris: any,
+}
+
+const CreatePlaylist = ({ token, userId, songUris, updateSongUris }: createPlaylist) => {
     const [playlistId, setPlaylistId] = useState("");
     const [form, setForm] = useState({
         title: "",
@@ -12,7 +19,7 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
     // run addSong function when playlistId is set
     useEffect(() => {
           // add songs to the playlist
-          const addSongs = async (id) => {
+          const addSongs = async (id:any) => {
             console.log("cek SongUris: "+songUris);
             await axios
             .post(
@@ -46,13 +53,13 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
     }, [playlistId, songUris, token, updateSongUris]);
 
     // get the form data
-    const handleForm = (e) => {
+    const handleForm = (e:any) => {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
     };
 
     // handle form submit
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         if (form.title.length > 10) {
             await axios
@@ -80,10 +87,10 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
 
         setForm({ title: "", description: "" });
         // alert("Successfully created playlist");
-        swal("Successs!", "Successfully created playlist", "success")
+        Swal.fire({title: 'Successs!', text:"Successfully created playlist", icon: 'success', background: '#0000' })
         } else {
         // alert("Title must be more than 10 characters");
-        swal("Warning", "Title must be more than 10 characters", "warning")
+        Swal.fire("Warning", "Title must be more than 10 characters", "warning",)
         }
     };
 
@@ -110,7 +117,7 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }) => {
               Description
             </label>
             <textarea
-              type="text"
+              //type="text"
               className="min-w-0 w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-aqua-400 focus:outline-none"
               placeholder="Description"
               name="description"

@@ -1,34 +1,21 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setAccessToken } from '../../reducer/accessTokenSlice';
 import SongCard from '../../components/SongCard';
 import Form from '../../components/CreatePlaylist';
 
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const CreatePlaylist = () => {
 
-    const token = useSelector((state) => state.accessToken.value);
-    const tokenType = useSelector((state)=> state.accessToken.type);
-    const userId = useSelector((state) => state.user.data.id);
-    // const dispatch = useDispatch();
+    const token = useSelector((state:any) => state.accessToken.value);
+    const tokenType = useSelector((state:any)=> state.accessToken.type);
+    const userId = useSelector((state:any) => state.user.data.id);
 
-    // const [userId, setUserId] = useState("");
     const [inputVal, setInputVal] = useState("");
     const [spotifyData, setSpotifyData] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
-
-    // const handleLogout = () => {
-    //     // tanpa redux
-    //     //setToken("");
-    //     // dengan redux
-    //     dispatch(setAccessToken(""));
-    //     window.localStorage.clear();
-    //     //window.localStorage.removeItem("accessToken");
-    // };
 
     // fetch API data search spotify 
     const getData = async() => {
@@ -46,7 +33,6 @@ const CreatePlaylist = () => {
         .then((data) => {
             console.log(data);
             setSpotifyData(data.tracks.items);
-            // getUserId();
         })
         .catch((err) => {
             console.log(err)
@@ -63,7 +49,7 @@ const CreatePlaylist = () => {
                 console.log('Error', err.message);
             }
             console.log(err.config);
-            swal("ERROR", "terdapat kesalahan saat mengambil data!", "error");
+            Swal.fire({icon: 'error', title: 'Oops...', text: 'Anda belum mengisi field pencarian!!!', width: 450});
         });
         //cek authorization
         console.log("cek auth: "+localStorage.getItem("tokenType")+ " " + token);
@@ -85,7 +71,10 @@ const CreatePlaylist = () => {
                                     aria-label="Search"
                                     onChange={(e) => setInputVal(e.target.value)}/>
                                 <button className="px-6 py-2 bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-r focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:bg-aqua-500" type="button" onClick={getData}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} size="xl"/>
+                                    <FontAwesomeIcon 
+                                    icon={faMagnifyingGlass} 
+                                    // size="xl"
+                                    /> 
                                 </button>
                             </div>
                         </div>
@@ -106,10 +95,10 @@ const CreatePlaylist = () => {
             }
             <div className="wrapper">
                 <div className="cards_wrap">
-                {spotifyData.map((d, id)=>{
+                {spotifyData.map((d:any)=>{
                 return token?(
                     <SongCard
-                        key = {id}
+                        key = {d.id}
                         name={d.name} 
                         image={d.album.images[1].url} 
                         album_name = {d.album.name}

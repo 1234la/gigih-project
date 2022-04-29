@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import CreatePlaylist from './pages/CreatePlaylist';
 import Playlist from './pages/Playlist';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
-  const token = useSelector((state) => state.accessToken.value);
+  const token = useSelector((state:any) => state.accessToken.value);
   // clear local storage
   window.localStorage.clear()
   return (

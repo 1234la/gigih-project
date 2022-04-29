@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import PlaylistCard from '../../components/PlaylistCard';
 
 const Playlist = () => {
-    const token = useSelector((state) => state.accessToken.value);
-    const tokenType = useSelector((state)=> state.accessToken.type);
+    const token = useSelector((state:any) => state.accessToken.value);
+    const tokenType = useSelector((state:any)=> state.accessToken.type);
     const [playlist, setPlaylist] = useState([]);
 
     useEffect (() => {
@@ -38,7 +38,7 @@ const Playlist = () => {
             </header>
             <div className="wrapper">
                 <div className="cards_wrap">
-                {playlist.map((d,id)=>{
+                {playlist.map((d:any)=>{
                     console.log("cek data playlist: "+d.external_urls.spotify)
                 return token?(
                     <PlaylistCard
@@ -47,6 +47,7 @@ const Playlist = () => {
                         name={d.name}
                         desc={d.description}
                         url={d.external_urls.spotify}
+                        total_tracks={d.tracks.total}
                     />
                     ):<></>
                 })

@@ -1,5 +1,12 @@
+type playlist = {
+    name: string,
+    image: string,
+    desc: string,
+    url: string,
+    total_tracks: number,
+}
 
-const PlaylistCard = (props) => {
+const PlaylistCard = (props:playlist) => {
     return(
         <div className="flex justify-center m-3">
             <div className="rounded-lg shadow-lg bg-aqua-500 bg-opacity-50 max-w-sm">

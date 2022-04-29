@@ -59,10 +59,10 @@ const Login = () => {
     },[dispatch]);
 
     // splitting parameters
-    const getReturnedParamsFromSpotifyAuth = (hash) => {
+    const getReturnedParamsFromSpotifyAuth = (hash:any) => {
         const stringAfterHashtag = hash.substring(1);
         const paramsInUrl = stringAfterHashtag.split("&");
-        const paramsSplitUp = paramsInUrl.reduce((accumulater, currentValue) => {
+        const paramsSplitUp = paramsInUrl.reduce((accumulater:any, currentValue:any) => {
             console.log(currentValue);
             const [key, value] = currentValue.split("=");
             accumulater[key] = value;
@@ -72,19 +72,19 @@ const Login = () => {
     }
 
     const handleLogin = () => {
-        window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
+        window.location.href = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
     };
 
     return(
         <div className=" flex flex-col justify-center items-center m-0 top-0 bottom-0 left-0 right-0 position absolute">
-            <div className='w-1/2'>
+            <div className='w-1/2' data-aos="fade-up" data-aos-duration="2000">
                 <img
                 src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
                 alt="logo-spotify"
                 className="logo-spotify"
                 />
             </div>
-            <p className="text-white">You Have to Log In Spotify !!!</p>
+            <p className="text-white">Welcome to Spotify. You Have to Log In Spotify !!!</p>
             <button className="px-10 py-2 bg-white hover:bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-xl" onClick = {handleLogin} style={{margin:"10px"}}>Log In</button>
         </div>  
     );
