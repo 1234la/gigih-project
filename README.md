@@ -10,7 +10,7 @@ Project ini dibuat untuk memenuhi penugasan yang telah diberikan selama saya men
 6. Anda dapat menjalankan playlist yang telah anda buat dengan menekan tombol play
 7. Anda dapat melihat profile anda di bagian navbar berupa foto dan juga username akun
 
-## Requirement Terpenuhi
+## Technical Requirements
 - [x] Menggunakan typescript
 - [x] Menggunakan tailwind css
 - [x] Implementasi Grid dan Flex pada css
