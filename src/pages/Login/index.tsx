@@ -6,7 +6,7 @@ import { setUser } from "../../reducer/userSlice";
 
 const CLIENT_ID = 'f354fa333682477f88c2c9f6dd53d33b';
 const SPOTIFY_AUTHORIZE_ENDPOINT = 'https://accounts.spotify.com/authorize';
-const REDIRECT_URL_AFTER_LOGIN = 'http://localhost:3000/';
+const REDIRECT_URL_AFTER_LOGIN = 'https://gigih-project-dcikgpoh7-1234la.vercel.app/';
 const SPACES_DELIMETER = "%20";
 const SCOPES = ["playlist-modify-private user-read-private playlist-read-private playlist-read-collaborative"];
 const SCOPES_URL_PARAM = SCOPES.join(SPACES_DELIMETER);
