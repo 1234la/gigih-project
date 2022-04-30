@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import SongCard from '../../components/SongCard';
-import Form from '../../components/CreatePlaylist';
+import Form from '../../components/FormCreatePlaylist';
 
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,30 +59,28 @@ const CreatePlaylist = () => {
         <div>
             <header className="title" style={{textAlign: "center"}}>
                 <div>
-                <h1 className="text-aqua-400 font-semibold text-2xl" style={{margin:"30px"}}> Create Your Playlist !</h1>
+                    <h1 className="text-aqua-400 font-semibold text-2xl" style={{margin:"30px"}}> Create Your Playlist !</h1>
                 </div>
-                {token ?  
-                    <div className="flex justify-center">
-                        <div className="mb-3 xl:w-1/3">
-                            <div className="flex w-full">
-                                <input type="search"
-                                    className="flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-aqua-400 focus:outline-none"
-                                    placeholder="Search music, album, artis...."
-                                    aria-label="Search"
-                                    onChange={(e) => setInputVal(e.target.value)}/>
-                                <button className="px-6 py-2 bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-r focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:bg-aqua-500" type="button" onClick={getData}>
-                                    <FontAwesomeIcon 
-                                    icon={faMagnifyingGlass} 
-                                    // size="xl"
-                                    /> 
-                                </button>
-                            </div>
+                <div className="flex justify-center">
+                    <div className="mb-3 xl:w-1/3">
+                        <div className="flex w-full">
+                            <input type="search"
+                                className="flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded-l transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-aqua-400 focus:outline-none"
+                                placeholder="Search music, album, artis...."
+                                aria-label="Search"
+                                data-testid="input-search"
+                                onChange={(e) => setInputVal(e.target.value)}/>
+                            <button className="px-6 py-2 bg-aqua-400 text-black font-medium text-xs leading-tight uppercase rounded-r focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:bg-aqua-500" type="button" onClick={getData} data-testid="button-search">
+                                <FontAwesomeIcon 
+                                icon={faMagnifyingGlass} 
+                                // size="xl"
+                                /> 
+                            </button>
                         </div>
                     </div>
-                : <></>
-                }
+                </div>
             </header>
-            {token && selectedItems[0]?
+            {selectedItems[0]?
                 <div>
                 <Form
                     token={token}
@@ -98,7 +96,6 @@ const CreatePlaylist = () => {
                 {spotifyData.map((d:any)=>{
                 return token?(
                     <SongCard
-                        key = {d.id}
                         name={d.name} 
                         image={d.album.images[1].url} 
                         album_name = {d.album.name}

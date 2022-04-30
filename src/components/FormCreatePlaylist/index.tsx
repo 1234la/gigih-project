@@ -107,6 +107,7 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }: createPlayl
               className="min-w-0 w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-aqua-400 focus:outline-none"
               placeholder="Title of Playlist"
               name="title"
+              data-testid="title"
               value={form.title}
               autoComplete="off"
               onChange={handleForm}
@@ -121,6 +122,7 @@ const CreatePlaylist = ({ token, userId, songUris, updateSongUris }: createPlayl
               className="min-w-0 w-full px-3 py-1.5 text-base font-normal bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-aqua-400 focus:outline-none"
               placeholder="Description"
               name="description"
+              data-testid="description"
               value={form.description}
               onChange={handleForm}
             />

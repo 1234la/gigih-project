@@ -9,8 +9,8 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@headlessui/react": "^1.5.0",
     "@reduxjs/toolkit": "^1.8.1",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.29",
@@ -55,6 +55,7 @@
     "@types/react-router-dom": "^5.3.3",
     "autoprefixer": "^10.4.4",
     "eslint": "^8.14.0",
+    "msw": "^0.39.2",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"
   }

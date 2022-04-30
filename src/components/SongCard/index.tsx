@@ -38,20 +38,20 @@ const SongCard = (props:songCard) => {
         <div className="card_item">
             <div className="card_inner">
                 <div className="card_top">
-                    <img src={props.image} alt="songimage" />
+                    <img src={props.image} alt="songimage" data-testid="song-image" />
                 </div>
                 <div className="card_bottom">
-                    <div className="card_title">
+                    <div className="card_title" data-testid="song-title">
                         <b>{props.name}</b>
                     </div>
-                    <p className="artist mt-2">- {props.artist} -</p>
-                    <p className="album-name">Album: {props.album_name}</p>
+                    <p className="artist mt-2" data-testid="song-artist">- {props.artist} -</p>
+                    <p className="album-name" data-testid="song-album">Album: {props.album_name}</p>
                     {/* <div className="card_info">
                         <p className="artist">Artist Name : {props.artist}</p>
                         <p className="album-name">Album Name : {props.album_name}</p>
                         <p className="total-tracks"> Total Track of Album : {props.total_track_album} </p>
                     </div> */}
-                    <div className="card_button">
+                    <div className="card_button" data-testid="song-button">
                         {/* cari apakah ada yang sama id di array selected dengan includes */}
                         {props.selected.includes("spotify:track:"+props.id_item) ? 
                             <button className="bg-aqua-500  rounded-lg mt-1.5 px-10 py-1" type="button" onClick={() => deselect(props.id_item)}>
